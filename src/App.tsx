@@ -1,4 +1,4 @@
-import BaseLayout from "./components/molecules/BaseLayout"
+import BaseLayout from "./components/layouts/BaseLayout"
 
 const App = () => {
 
