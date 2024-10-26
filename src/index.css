@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #1d1d26;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,4 +21,26 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* width */
+.scroll-styled::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scroll-styled::-webkit-scrollbar-track {
+  background: #a4a5a6;
+  border-radius: 5px;
+}
+
+/* Handle */
+.scroll-styled::-webkit-scrollbar-thumb {
+  background: #f27f3d;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.scroll-styled::-webkit-scrollbar-thumb:hover {
+  background: #a4a5a6;
 }

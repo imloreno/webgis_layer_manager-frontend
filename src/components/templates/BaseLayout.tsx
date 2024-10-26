@@ -9,7 +9,7 @@ const BaseLayout = () => {
 
   const mapTheme = getTheme(themeSelected);
   return (
-    <div className="grid grid-cols-4 h-screen">
+    <div className="grid grid-cols-4 h-screen text-lg">
       <div className="col-span-3">
         <MapContainer
           center={position}
@@ -22,7 +22,7 @@ const BaseLayout = () => {
           <TileLayer {...mapTheme.mapProps} />
         </MapContainer>
       </div>
-      <div className="bg-[#212226] border-[#6b6f7f] border-l overflow-hidden">
+      <div className="overflow-hidden">
         <Menu />
       </div>
     </div>

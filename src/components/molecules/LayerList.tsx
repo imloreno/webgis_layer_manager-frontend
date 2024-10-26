@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LayerItem, Subtitle } from "@atoms";
+import { Button, LayerItem, Subtitle } from "@atoms";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { LayerItemProps } from "@atoms";
@@ -11,6 +11,7 @@ const layers: LayerItemProps[] = [
   { id: 2, sort: 2, name: "Lagos", isVisible: true },
   { id: 3, sort: 3, name: "Capitales", isVisible: true },
   { id: 4, sort: 4, name: "Estados", isVisible: true },
+  { id: 5, sort: 5, name: "Paises", isVisible: true },
 ];
 
 const LayerList = () => {
@@ -27,11 +28,10 @@ const LayerList = () => {
   };
 
   return (
-    <>
-      <Subtitle className="pt-5 px-8">Capas</Subtitle>
-      <hr />
+    <section className="py-4 w-full mt-auto border-t border-[#1D1D26]">
+      <Subtitle className="px-6 mb-4">Capas</Subtitle>
 
-      <ul className="flex flex-col gap-y-2 my-[2rem] px-8">
+      <ul className="flex flex-col gap-y-2 mt-8 mb-4 px-6 overflow-y-auto h-72 scroll-styled">
         <DndContext
           modifiers={[restrictToVerticalAxis]}
           onDragEnd={handleDragEnd}
@@ -43,7 +43,10 @@ const LayerList = () => {
           </SortableContext>
         </DndContext>
       </ul>
-    </>
+      <div className="px-8 py-4 flex justify-center">
+        <Button icon="add">Agregar capa</Button>
+      </div>
+    </section>
   );
 };
 

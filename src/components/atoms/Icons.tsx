@@ -1,8 +1,14 @@
 import {
+  faCompress,
+  faEllipsisVertical,
+  faExpand,
   faEye,
   faEyeSlash,
   faGripVertical,
   faHome,
+  faMoon,
+  faPlus,
+  faSun,
   faXmark,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +25,12 @@ const iconList: { [key: string]: IconDefinition } = {
   draggable: faGripVertical,
   visible: faEye,
   hidden: faEyeSlash,
+  options: faEllipsisVertical,
+  expand: faExpand,
+  compress: faCompress,
+  add: faPlus,
+  dark: faMoon,
+  light: faSun,
 };
 
 const Icons = ({ type, className = "" }: IconsProps) => {
