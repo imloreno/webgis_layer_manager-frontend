@@ -1,9 +1,9 @@
-import AddLayerForm from "@molecules/AddLayerForm"
+import { AddLayerForm, LayerList } from "@molecules"
 
 const Menu = () => {
    return (
       <nav>
-         This is the real menú
+         <LayerList />
          <AddLayerForm isOpen={false} />
       </nav>
    )

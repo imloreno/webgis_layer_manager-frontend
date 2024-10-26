@@ -1,9 +1,12 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import Input from "@atoms/Input";
-import Button from "@atoms/Button";
-import InputFile from "@components/atoms/InputFile";
+import {
+   Input,
+   Button,
+   InputFile,
+   Subtitle
+} from "@atoms";
 import { IGeoJSONBase } from "@models/form";
-import Dialog from "@templates/Dialog";
+import { Dialog } from "@templates";
 
 interface IAddLayerFormProps {
    isOpen: boolean;
@@ -24,7 +27,7 @@ const AddLayerForm = ({ isOpen }: IAddLayerFormProps) => {
    return (
       <Dialog isOpen={isOpen}>
          <div className="form">
-            <h3 className="text-xl font-bold mb-6">Agregar una nueva capa</h3>
+            <Subtitle>Agregar una nueva capa</Subtitle>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4" encType="multipart/form-data">
                <Input label="Ingrese el nombre de la capa" register={register} layerName="layer_name" type="text" />
                <Input label="Ingrese la posición" register={register} layerName="sorting" type="number" />
