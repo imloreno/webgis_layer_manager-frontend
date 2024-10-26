@@ -6,9 +6,10 @@ export interface LayerItemProps {
   id: number;
   sort: number;
   name: string;
+  isVisible: boolean;
 }
 
-const LayerItem = ({ id, sort, name }: LayerItemProps) => {
+const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
   // React DND Kit
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
@@ -24,12 +25,17 @@ const LayerItem = ({ id, sort, name }: LayerItemProps) => {
       {...attributes}
       {...listeners}
       style={style}
-      className="p-3 rounded border border-[#6b6f7f] cursor-pointer select-none divide-x divide-[#383838]"
+      className="p-3 rounded border border-[#6b6f7f] 
+      cursor-pointer select-none flex items-center 
+      gap-x-3 divide-x divide-[#383838]"
     >
-      <Icons type="draggable" className="mr-3" />
+      <Icons type="draggable" />
       <span className="pl-3">
         {sort} - {name}
       </span>
+      <div className="w-6 h-6 ml-auto border-none flex items-center justify-center">
+        <Icons type={`${isVisible ? "visible" : "hidden"}`} />
+      </div>
     </li>
   );
 };

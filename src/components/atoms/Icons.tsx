@@ -1,4 +1,6 @@
 import {
+  faEye,
+  faEyeSlash,
   faGripVertical,
   faHome,
   faXmark,
@@ -15,6 +17,8 @@ const iconList: { [key: string]: IconDefinition } = {
   home: faHome,
   close: faXmark,
   draggable: faGripVertical,
+  visible: faEye,
+  hidden: faEyeSlash,
 };
 
 const Icons = ({ type, className = "" }: IconsProps) => {

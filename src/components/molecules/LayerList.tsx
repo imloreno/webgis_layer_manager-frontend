@@ -3,13 +3,14 @@ import { LayerItem, Subtitle } from "@atoms";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { LayerItemProps } from "@atoms";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
 // TODO: Replace with API call
 const layers: LayerItemProps[] = [
-  { id: 1, sort: 1, name: "Ríos" },
-  { id: 2, sort: 2, name: "Lagos" },
-  { id: 3, sort: 3, name: "Capitales" },
-  { id: 4, sort: 4, name: "Estados" },
+  { id: 1, sort: 1, name: "Ríos", isVisible: true },
+  { id: 2, sort: 2, name: "Lagos", isVisible: true },
+  { id: 3, sort: 3, name: "Capitales", isVisible: true },
+  { id: 4, sort: 4, name: "Estados", isVisible: true },
 ];
 
 const LayerList = () => {
@@ -31,7 +32,10 @@ const LayerList = () => {
       <hr />
 
       <ul className="flex flex-col gap-y-2 my-[2rem] px-8">
-        <DndContext onDragEnd={handleDragEnd}>
+        <DndContext
+          modifiers={[restrictToVerticalAxis]}
+          onDragEnd={handleDragEnd}
+        >
           <SortableContext items={layerItems}>
             {layerItems.map((layer: LayerItemProps) => (
               <LayerItem key={layer.id} {...layer} />
