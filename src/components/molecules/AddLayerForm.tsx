@@ -3,10 +3,13 @@ import Input from "@atoms/Input";
 import Button from "@atoms/Button";
 import InputFile from "@components/atoms/InputFile";
 import { IGeoJSONBase } from "@models/form";
-import Dialog from "@layouts/Dialog";
+import Dialog from "@templates/Dialog";
 
+interface IAddLayerFormProps {
+   isOpen: boolean;
+}
 
-const AddLayerForm = () => {
+const AddLayerForm = ({ isOpen }: IAddLayerFormProps) => {
    const { register, handleSubmit } = useForm<IGeoJSONBase, undefined>({
       defaultValues: {
          layer_file: "",
@@ -19,7 +22,7 @@ const AddLayerForm = () => {
    const onSubmit: SubmitHandler<IGeoJSONBase> = (data) => console.log(data);
 
    return (
-      <Dialog isOpen={false}>
+      <Dialog isOpen={isOpen}>
          <div className="form">
             <h3 className="text-xl font-bold mb-6">Agregar una nueva capa</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-4" encType="multipart/form-data">

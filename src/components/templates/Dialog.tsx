@@ -17,7 +17,7 @@ const Dialog = ({ children, isOpen, onClose = () => { } }: DialogProps) => {
    return (
       <section className="fixed h-screen 
          w-screen top-0 left-0 bg-[#1f242bbf] 
-         flex items-center justify-center"
+         flex items-center justify-center z-[9999]"
       >
          <article className="w-[30rem] min-h-96 bg-[#212226] border border-[#383838] rounded-lg p-8 relative">
             <div className="flex items-center 

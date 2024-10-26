@@ -1,8 +1,8 @@
 import { getTheme } from "@utils/theme";
-import AddLayerForm from "../molecules/AddLayerForm"
 import useTheme from "@store/useTheme";
 import { MapContainer, TileLayer } from "react-leaflet";
 import { position } from "@utils/constants";
+import Menu from "@components/organism/Menu";
 
 const BaseLayout = () => {
    const { themeSelected } = useTheme();
@@ -24,7 +24,7 @@ const BaseLayout = () => {
             </MapContainer>
          </div>
          <div className="bg-[#212226] border-[#6b6f7f] border-l py-5 px-8">
-            <AddLayerForm />
+            <Menu />
          </div>
       </div>
    )

@@ -39,8 +39,11 @@
       "@molecules/*": [
         "./src/components/molecules/*"
       ],
-      "@layouts/*": [
-        "./src/components/layouts/*"
+      "@organism/*": [
+        "./src/components/organism/*"
+      ],
+      "@templates/*": [
+        "./src/components/templates/*"
       ],
       "@models/*": [
         "./src/models/*"

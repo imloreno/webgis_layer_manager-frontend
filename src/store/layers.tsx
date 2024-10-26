@@ -5,6 +5,6 @@ const layersInitialState: GeoJSONProps[] = []
 
 export const useLayers = create((set) => ({
    layers: layersInitialState,
-   addLayer: (layer: GeoJSONProps) => set((state: any) => ({ layers: [...state.layers, layer] })),
+   addLayer: (layer: GeoJSONProps) => set((state: { layers: GeoJSONProps[] }) => ({ layers: [...state.layers, layer] })),
    setLayers: (layers: GeoJSONProps) => set({ layers }),
 }))
