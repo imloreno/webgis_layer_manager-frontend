@@ -23,7 +23,7 @@ const BaseLayout = () => {
                <TileLayer {...mapTheme.mapProps} />
             </MapContainer>
          </div>
-         <div className="bg-[#212226] border-[#6b6f7f] border-l py-5 px-8">
+         <div className="bg-[#212226] border-[#6b6f7f] border-l">
             <Menu />
          </div>
       </div>

@@ -1,19 +1,19 @@
-import { Subtitle } from "@atoms"
+import { LayerItem, Subtitle } from "@atoms";
 
 const LayerList = () => {
-   return (<>
-      <Subtitle>Capas</Subtitle>
+  return (
+    <>
+      <Subtitle className="pt-5 px-8">Capas</Subtitle>
       <hr />
-      <ul>
-         <li>Capa #1</li>
-         <li>Capa #2</li>
-         <li>Capa #3</li>
-         <li>Capa #4</li>
-         <li>Capa #5</li>
-         <li>Capa #6</li>
-      </ul>
-   </>
-   )
-}
 
-export default LayerList
+      <ul className="flex flex-col gap-y-2 my-[2rem] px-8">
+        <LayerItem sort={1} name="Ríos" />
+        <LayerItem sort={2} name="Lagos" />
+        <LayerItem sort={3} name="Capitales" />
+        <LayerItem sort={4} name="Estados" />
+      </ul>
+    </>
+  );
+};
+
+export default LayerList;

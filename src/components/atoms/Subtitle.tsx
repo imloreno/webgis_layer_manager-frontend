@@ -1,8 +1,11 @@
+import { Customizable } from "@models/base"
 import React from "react"
 
-const Subtitle = ({ children }: { children: React.ReactNode }) => {
+interface SubtitleProps extends Customizable { children: React.ReactNode }
+
+const Subtitle = ({ children, className }: SubtitleProps) => {
    return (
-      <h3 className="text-xl font-bold mb-6">{children}</h3>
+      <h3 className={`text-xl font-bold mb-6 ${className}`}>{children}</h3>
    )
 }
 
