@@ -1,8 +1,8 @@
+import { MapContainer, TileLayer } from "react-leaflet";
 import { getTheme } from "@utils/theme";
 import useTheme from "@store/useTheme";
-import { MapContainer, TileLayer } from "react-leaflet";
 import { position } from "@utils/constants";
-import Menu from "@components/organism/Menu";
+import { Menu } from "@organism";
 
 const BaseLayout = () => {
    const { themeSelected } = useTheme();

@@ -1,6 +1,8 @@
+import { Subtitle } from "@atoms"
+
 const LayerList = () => {
    return (<>
-      <h2>Capas</h2>
+      <Subtitle>Capas</Subtitle>
       <hr />
       <ul>
          <li>Capa #1</li>

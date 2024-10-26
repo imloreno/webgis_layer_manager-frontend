@@ -30,9 +30,6 @@
     /* Alias path */
     "baseUrl": "./",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
       "@atoms": [
         "./src/components/atoms/"
       ],
@@ -47,9 +44,6 @@
       ],
       "@models/*": [
         "./src/models/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
       ],
       "@utils/*": [
         "./src/utils/*"
