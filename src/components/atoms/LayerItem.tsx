@@ -25,7 +25,7 @@ const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
       {...attributes}
       {...listeners}
       style={style}
-      className="p-3 rounded border border-[#6b6f7f]
+      className="py-2 px-4 rounded border border-[#6b6f7f]
       cursor-pointer select-none flex items-center 
       gap-x-3 divide-x divide-[#383838] text-lg
       font-normal bg-[#1D1D26]"
@@ -34,7 +34,7 @@ const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
       <span className="pl-3 text-base">
         {sort} - {name}
       </span>
-      <div className="w-6 h-6 ml-auto border-none flex items-center justify-center">
+      <div className="w-4 h-4 ml-auto border-none flex items-center justify-center">
         <Icons
           type={`${isVisible ? "visible" : "hidden"}`}
           className="text-[#F29D52]"

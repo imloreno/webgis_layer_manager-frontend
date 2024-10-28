@@ -5,7 +5,13 @@ const InputFile = ({ register, label, layerName }: IInputFileProps) => {
   return (
     <div>
       <label className={`cursor-pointer w-fit ${styles.inputFile}`}>
-        <span className="text-sm font-medium">{label}</span>
+        <span
+          className="text-gray-500 font-medium text-sm 
+            after:content-['*'] after:ml-0.5 
+            after:text-red-500"
+        >
+          {label}
+        </span>
         <input
           type="file"
           {...register(layerName)}

@@ -24,6 +24,9 @@
 }
 
 /* width */
+.scroll-styled {
+  margin-right: 0.5rem;
+}
 .scroll-styled::-webkit-scrollbar {
   width: 10px;
 }

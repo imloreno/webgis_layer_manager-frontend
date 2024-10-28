@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, LayerItem, Subtitle } from "@atoms";
+import { LayerItem, Subtitle } from "@atoms";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { LayerItemProps } from "@atoms";
@@ -12,6 +12,13 @@ const layers: LayerItemProps[] = [
   { id: 3, sort: 3, name: "Capitales", isVisible: true },
   { id: 4, sort: 4, name: "Estados", isVisible: true },
   { id: 5, sort: 5, name: "Paises", isVisible: true },
+  { id: 6, sort: 5, name: "Paises", isVisible: true },
+  { id: 7, sort: 7, name: "Paises", isVisible: true },
+  { id: 8, sort: 8, name: "Paises", isVisible: true },
+  { id: 9, sort: 9, name: "Paises", isVisible: true },
+  { id: 10, sort: 10, name: "Paises", isVisible: true },
+  { id: 11, sort: 11, name: "Paises", isVisible: true },
+  { id: 12, sort: 12, name: "Paises", isVisible: true },
 ];
 
 const LayerList = () => {

@@ -14,13 +14,15 @@ const Menu = () => {
       <LayerDetails />
       <LayerList />
 
-      <div className="px-8 py-4 flex justify-center">
+      <div className="px-8 mb-8 flex justify-center">
         <Button icon="add" onClick={handleAddLayerDisplay}>
           Agregar capa
         </Button>
+        <AddLayerForm
+          isOpen={showAddLayerForm}
+          onClose={handleAddLayerDisplay}
+        />
       </div>
-
-      <AddLayerForm isOpen={showAddLayerForm} onClose={handleAddLayerDisplay} />
     </nav>
   );
 };
