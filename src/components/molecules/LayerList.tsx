@@ -43,9 +43,6 @@ const LayerList = () => {
           </SortableContext>
         </DndContext>
       </ul>
-      <div className="px-8 py-4 flex justify-center">
-        <Button icon="add">Agregar capa</Button>
-      </div>
     </section>
   );
 };

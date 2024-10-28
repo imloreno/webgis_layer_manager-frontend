@@ -28,10 +28,10 @@ const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
       className="p-3 rounded border border-[#6b6f7f]
       cursor-pointer select-none flex items-center 
       gap-x-3 divide-x divide-[#383838] text-lg
-      bg-[#1D1D26]"
+      font-normal bg-[#1D1D26]"
     >
       <Icons type="draggable" className="text-[#F29D52]" />
-      <span className="pl-3 text-lg">
+      <span className="pl-3 text-base">
         {sort} - {name}
       </span>
       <div className="w-6 h-6 ml-auto border-none flex items-center justify-center">

@@ -1,16 +1,16 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import { getTheme } from "@utils/theme";
-import useTheme from "@store/useTheme";
+import useSettings from "@store/useSettings";
 import { position } from "@utils/constants";
 import { Menu } from "@organism";
 
 const BaseLayout = () => {
-  const { themeSelected } = useTheme();
+  const { themeSelected } = useSettings();
 
   const mapTheme = getTheme(themeSelected);
   return (
-    <div className="grid grid-cols-4 h-screen text-lg">
-      <div className="col-span-3">
+    <div className="flex h-screen text-lg">
+      <div className="w-full">
         <MapContainer
           center={position}
           zoom={7}
@@ -22,7 +22,7 @@ const BaseLayout = () => {
           <TileLayer {...mapTheme.mapProps} />
         </MapContainer>
       </div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden overflow-y-auto scroll-styled w-[30rem]">
         <Menu />
       </div>
     </div>
