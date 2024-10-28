@@ -25,7 +25,7 @@
 
 /* width */
 .scroll-styled {
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
 }
 .scroll-styled::-webkit-scrollbar {
   width: 10px;

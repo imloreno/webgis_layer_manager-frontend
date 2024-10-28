@@ -1,15 +1,9 @@
 import { CSS } from "@dnd-kit/utilities";
 import { Icons } from "@atoms";
 import { useSortable } from "@dnd-kit/sortable";
+import { ILayer } from "@models/layers";
 
-export interface LayerItemProps {
-  id: number;
-  sort: number;
-  name: string;
-  isVisible: boolean;
-}
-
-const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
+const LayerItem = ({ id, sorting, name, isVisible }: ILayer) => {
   // React DND Kit
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
@@ -32,7 +26,7 @@ const LayerItem = ({ id, sort, name, isVisible }: LayerItemProps) => {
     >
       <Icons type="draggable" className="text-[#F29D52]" />
       <span className="pl-3 text-base">
-        {sort} - {name}
+        {sorting} - {name}
       </span>
       <div className="w-4 h-4 ml-auto border-none flex items-center justify-center">
         <Icons

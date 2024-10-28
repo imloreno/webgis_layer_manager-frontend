@@ -1,10 +1,12 @@
-export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
         primary: "#ffffffde",
-        secondary: "#f29d52",
+        secondary: "#f27f3d",
+        tertiary: "#f29d52",
+        label: "#6b7280",
         background: "#0d0d0d",
         backgroundSecondary: "#1D1D26",
         border: "#6b6f7f",

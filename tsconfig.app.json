@@ -51,6 +51,12 @@
       "@store/*": [
         "./src/store/*"
       ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@hooks": [
+        "./src/hooks"
+      ],
     }
   },
   "include": [

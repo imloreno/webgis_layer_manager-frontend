@@ -6,7 +6,7 @@ const InputFile = ({ register, label, layerName }: IInputFileProps) => {
     <div>
       <label className={`cursor-pointer w-fit ${styles.inputFile}`}>
         <span
-          className="text-gray-500 font-medium text-sm 
+          className="text-label font-medium text-sm 
             after:content-['*'] after:ml-0.5 
             after:text-red-500"
         >
@@ -16,13 +16,13 @@ const InputFile = ({ register, label, layerName }: IInputFileProps) => {
           type="file"
           {...register(layerName)}
           className="block w-fit
-            text-sm text-slate-500 cursor-pointer
+            text-sm text-primary cursor-pointer
             file:mr-4 file:py-2 file:px-4
             file:rounded-full file:border-0
             file:text-sm file:font-semibold
-            file:bg-violet-50 file:text-violet-700
+            file:bg-secondary file:text-background
             file:cursor-pointer
-            hover:file:bg-violet-100"
+            hover:file:bg-tertiary"
           accept=".geojson"
           onChange={(e) => {
             console.log(e.target.files);

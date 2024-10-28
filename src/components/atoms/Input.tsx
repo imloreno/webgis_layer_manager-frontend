@@ -6,7 +6,7 @@ const Input = ({ register, label, layerName, type }: InputProps) => {
       <span
         className="after:content-['*'] after:ml-0.5 
             after:text-red-500 block text-sm 
-            font-medium text-gray-500"
+            font-medium text-label"
       >
         {label}
       </span>

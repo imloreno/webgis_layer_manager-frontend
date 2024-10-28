@@ -1,8 +1,13 @@
-import BaseLayout from "@templates/BaseLayout"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BaseLayout } from "@templates";
 
 const App = () => {
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <BaseLayout />
+    </QueryClientProvider>
+  );
+};
 
-  return <BaseLayout />
-}
-
-export default App
+export default App;
