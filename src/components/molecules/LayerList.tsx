@@ -24,7 +24,7 @@ const LayerList = () => {
     <section className="py-4 w-full mt-auto border-t border-[#1D1D26]">
       <Subtitle className="px-6 mb-4">Capas</Subtitle>
 
-      <ul className="flex flex-col gap-y-2 mt-8 mb-4 px-6 overflow-y-auto h-72 scroll-styled">
+      <ul className="flex flex-col gap-y-2 mt-8 mb-4 px-6 overflow-y-auto m-h-72 min-h-10 scroll-styled">
         <DndContext
           modifiers={[restrictToVerticalAxis]}
           onDragEnd={handleDragEnd}
@@ -40,6 +40,12 @@ const LayerList = () => {
                   handleVisibility={toggleLayerVisibility}
                 />
               ))}
+            {layers.length === 0 && (
+              <p className="text-xs text-label">
+                Aún no hay capas, haga click en "Agregar Capa" para crear una
+                capa nueva.
+              </p>
+            )}
           </SortableContext>
         </DndContext>
       </ul>
