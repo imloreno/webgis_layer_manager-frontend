@@ -7,6 +7,7 @@ interface ILayerStore {
   layers: ILayer[];
   addLayer: (layer: ILayer) => void;
   setLayers: (layers: ILayer[]) => void;
+  toggleLayerVisibility: (id: string) => void;
 
   // Feature handler
   features: { [key: string]: GeoJSONProps };
@@ -26,6 +27,14 @@ const useLayersStore = create<ILayerStore>((set) => ({
     })),
   setLayers: (layers: ILayer[]) =>
     set((state: ILayerStore) => ({ ...state, layers })),
+  toggleLayerVisibility: (id: string) => {
+    set((state: ILayerStore) => ({
+      ...state,
+      layers: state.layers.map((layer) =>
+        layer.id === id ? { ...layer, isVisible: !layer.isVisible } : layer
+      ),
+    }));
+  },
 
   // Feature handler
   features: featuresInitialState,
