@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useLayersStore from "@store/useLayersStore";
-import { fetchLayers } from "@api/layers";
+import { createLayer, fetchLayers } from "@api/layers";
 import { ILayer } from "@models/layers";
 
 // API response interface
@@ -15,7 +15,7 @@ interface APIResponse {
 
 const useLayers = () => {
   const setLayers = useLayersStore((state) => state.setLayers);
-
+  const queryClient = useQueryClient();
   const {
     data: { data: response } = {},
     isLoading,
@@ -23,6 +23,15 @@ const useLayers = () => {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchLayers,
+  });
+
+  // Uploading layers API call
+  // TODO: Fix "posts" key
+  const mutationLayers = useMutation({
+    mutationFn: createLayer,
+    onSuccess: () => {
+      queryClient.invalidateQueries("posts");
+    },
   });
 
   // Use useEffect to update Zustand store when data is fetched

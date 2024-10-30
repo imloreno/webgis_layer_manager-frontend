@@ -1,6 +1,6 @@
 import { InputProps } from "@models/form";
 
-const Input = ({ register, label, layerName, type }: InputProps) => {
+const Input = ({ register, label, type }: InputProps) => {
   return (
     <label className="block">
       <span
@@ -12,7 +12,7 @@ const Input = ({ register, label, layerName, type }: InputProps) => {
       </span>
       <input
         type={type}
-        {...register(layerName)}
+        {...register}
         className="mt-1 px-3 
             py-2 border shadow-sm border-slate-300 
             placeholder-slate-400 focus:outline-none 

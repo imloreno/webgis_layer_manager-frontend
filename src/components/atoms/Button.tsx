@@ -19,7 +19,8 @@ const Button = ({
       type={type}
       className="py-2 px-4 text-base
          bg-[#F27F3D] hover:bg-[#F29D52] rounded
-         disabled:bg-[#1D1D26] disabled:cursor-not-allowed
+         disabled:bg-background disabled:cursor-not-allowed
+         disabled:text-label
          text-[#1D1D26] font-bold"
       disabled={disabled}
       onClick={onClick}
