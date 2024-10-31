@@ -1,5 +1,4 @@
 import { ILayer } from "@models/layers";
-import { GeoJSONProps } from "react-leaflet";
 import { create } from "zustand";
 
 interface ILayerStore {
@@ -8,13 +7,9 @@ interface ILayerStore {
   addLayer: (layer: ILayer) => void;
   setLayers: (layers: ILayer[]) => void;
   toggleLayerVisibility: (id: string) => void;
-
-  // Feature handler
-  features: { [key: string]: GeoJSONProps };
 }
 
 // Initial state
-const featuresInitialState = {};
 const layersInitialState: ILayer[] = [];
 
 const useLayersStore = create<ILayerStore>((set) => ({
@@ -35,9 +30,6 @@ const useLayersStore = create<ILayerStore>((set) => ({
       ),
     }));
   },
-
-  // Feature handler
-  features: featuresInitialState,
 }));
 
 export default useLayersStore;
