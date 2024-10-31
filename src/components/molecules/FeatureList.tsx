@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { GeoJSON } from "react-leaflet";
 import { isEmpty } from "lodash";
 import { useGeoJsonData } from "@hooks";
-import { ScreenMessage } from "@atoms";
+import { ScreenMessage, Spinner } from "@atoms";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
 
@@ -30,15 +30,20 @@ const FeatureList = () => {
   }, [data, addGeoJsonLayer, isSuccess]);
 
   if (isLoading) {
-    return <ScreenMessage>Loading...</ScreenMessage>;
+    return (
+      <ScreenMessage>
+        <Spinner />
+      </ScreenMessage>
+    );
   }
   return (
     <div className="z-[9999]">
-      {layers
-        .filter((layer: ILayer) => layer.isVisible)
-        .map((layer: ILayer) => {
-          return <GeoJSON key={layer.id} data={geoJsonLayers[layer.id]} />;
-        })}
+      {!isEmpty(geoJsonLayers) &&
+        layers
+          .filter((layer: ILayer) => layer.isVisible)
+          .map((layer: ILayer) => {
+            return <GeoJSON key={layer.id} data={geoJsonLayers[layer.id]} />;
+          })}
     </div>
   );
 };

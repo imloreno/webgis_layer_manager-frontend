@@ -23,10 +23,13 @@ const useLayersStore = create<ILayerStore>((set) => ({
   addLayer: (layer: ILayer) =>
     set((state: ILayerStore) => ({
       ...state,
-      layers: [...state.layers, layer],
+      layers: [...state.layers, { ...layer, isVisible: true }],
     })),
   setLayers: (layers: ILayer[]) =>
-    set((state: ILayerStore) => ({ ...state, layers })),
+    set((state: ILayerStore) => ({
+      ...state,
+      layers: layers.map((layerToadd) => ({ ...layerToadd, isVisible: true })),
+    })),
   toggleLayerVisibility: (id: string) => {
     set((state: ILayerStore) => ({
       ...state,
