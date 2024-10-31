@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Input, Button, InputFile, Subtitle } from "@atoms";
 import { IGeoJSONBase, TInputType, TLayerName } from "@models/form";
 import { Dialog } from "@templates";
+import { useLayers } from "@hooks";
 
 interface IAddLayerFormProps {
   isOpen: boolean;
@@ -33,14 +34,6 @@ const formFields = [
     registerProps: {
       required: true,
       errorMessage: "El archivo GeoJSON es requerido",
-      validate: (value: any) => {
-        const acceptedFormats = ["geojson"];
-        const fileExtension = value[0]?.name.split(".").pop().toLowerCase();
-        if (!acceptedFormats.includes(fileExtension)) {
-          return "Invalid file format. Only geojson files are allowed.";
-        }
-        return true;
-      },
     },
     name: "layer_file",
     type: "file",
@@ -48,18 +41,28 @@ const formFields = [
   },
 ];
 
+const formInitialState: IGeoJSONBase = {
+  layer_file: "",
+  sorting: 1,
+  layer_name: "",
+};
+
 const AddLayerForm = ({ isOpen, onClose }: IAddLayerFormProps) => {
-  const { register, handleSubmit } = useForm<IGeoJSONBase, undefined>({
-    defaultValues: {
-      layer_file: "",
-      sorting: 1,
-      coordinate_system: "",
-      layer_name: "",
-    },
+  const { register, handleSubmit, reset } = useForm<IGeoJSONBase, undefined>({
+    mode: "all",
+    defaultValues: formInitialState,
   });
+  const { isAddingLayer, addLayer } = useLayers();
 
   const onSubmit: SubmitHandler<IGeoJSONBase> = (data) => {
-    console.log(data);
+    // Create a FormData object
+    const formData = new FormData();
+    formData.append("layer_file", data.layer_file[0]);
+    formData.append("sorting", data.sorting.toString());
+    formData.append("layer_name", data.layer_name);
+    addLayer(formData);
+    reset(formInitialState);
+    onClose();
   };
 
   return (
@@ -79,6 +82,7 @@ const AddLayerForm = ({ isOpen, onClose }: IAddLayerFormProps) => {
                   label={label}
                   name={name as TLayerName}
                   register={register(name as TLayerName, registerProps)}
+                  disabled={isAddingLayer}
                 />
               );
             }

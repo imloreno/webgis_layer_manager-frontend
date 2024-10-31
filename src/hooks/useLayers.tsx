@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useLayersStore from "@store/useLayersStore";
 import { createLayer, fetchLayers } from "@api/layers";
 import { ILayer } from "@models/layers";
+import { CREATE_LAYER, FETCH_LAYERS } from "@hooks";
 
 // API response interface
 interface APIResponse {
@@ -15,22 +16,28 @@ interface APIResponse {
 
 const useLayers = () => {
   const setLayers = useLayersStore((state) => state.setLayers);
+
+  // Fetching layers API call
   const queryClient = useQueryClient();
   const {
     data: { data: response } = {},
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["posts"],
+    queryKey: [FETCH_LAYERS],
     queryFn: fetchLayers,
   });
 
-  // Uploading layers API call
-  // TODO: Fix "posts" key
-  const mutationLayers = useMutation({
+  // Create layer API call
+  const { mutate: addLayer, isPending: isAddingLayer } = useMutation({
+    mutationKey: [CREATE_LAYER],
     mutationFn: createLayer,
     onSuccess: () => {
-      queryClient.invalidateQueries("posts");
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_LAYERS],
+        exact: true,
+        refetchType: "active",
+      });
     },
   });
 
@@ -54,9 +61,14 @@ const useLayers = () => {
   }, [response, setLayers]);
 
   return {
+    // Fetch layers
     data: response,
     isLoading,
     isError,
+
+    // Create layer
+    addLayer,
+    isAddingLayer,
   };
 };
 

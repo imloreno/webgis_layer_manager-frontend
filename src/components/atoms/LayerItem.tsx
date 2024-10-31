@@ -39,13 +39,15 @@ const LayerItem = ({
       cursor-pointer select-none flex items-center 
       gap-x-3 divide-x divide-[#383838] text-lg
       font-normal bg-[#1D1D26]"
-      onMouseUp={handleVisibilityButton}
     >
       <Icons type="draggable" className="text-[#F29D52]" />
       <span className="pl-3 text-base">
         {sorting} - {name}
       </span>
-      <div className="w-4 h-4 ml-auto border-none flex items-center justify-center border">
+      <div
+        className="w-4 h-4 ml-auto border-none flex items-center justify-center border"
+        onMouseUp={handleVisibilityButton}
+      >
         <Icons
           type={`${isVisible ? "visible" : "hidden"}`}
           className="text-[#F29D52]"

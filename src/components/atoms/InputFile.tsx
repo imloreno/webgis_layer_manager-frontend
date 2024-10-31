@@ -1,7 +1,7 @@
 import { IInputFileProps } from "@models/form";
 import styles from "./inputFile.module.css";
 
-const InputFile = ({ register, label }: IInputFileProps) => {
+const InputFile = ({ register, label, disabled, ...rest }: IInputFileProps) => {
   return (
     <div>
       <label className={`cursor-pointer w-fit ${styles.inputFile}`}>
@@ -14,6 +14,8 @@ const InputFile = ({ register, label }: IInputFileProps) => {
         </span>
         <input
           type="file"
+          disabled={disabled}
+          {...rest}
           {...register}
           className="block w-fit
             text-sm text-primary cursor-pointer
@@ -24,9 +26,6 @@ const InputFile = ({ register, label }: IInputFileProps) => {
             file:cursor-pointer
             hover:file:bg-tertiary"
           accept=".geojson"
-          onChange={(e) => {
-            // console.log(e.target.files);
-          }}
         />
       </label>
     </div>
