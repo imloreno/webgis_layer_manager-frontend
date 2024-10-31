@@ -2,18 +2,11 @@ import { CSS } from "@dnd-kit/utilities";
 import { Icons } from "@atoms";
 import { useSortable } from "@dnd-kit/sortable";
 import { ILayer } from "@models/layers";
+import useLayersStore from "@store/useLayersStore";
 
-interface ILayerItem extends ILayer {
-  handleVisibility: (id: string) => void;
-}
-
-const LayerItem = ({
-  id,
-  sorting,
-  name,
-  isVisible,
-  handleVisibility,
-}: ILayerItem) => {
+const LayerItem = ({ id, sorting, name, isVisible }: ILayer) => {
+  // Layer Store
+  const { toggleLayerVisibility } = useLayersStore();
   // React DND Kit
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
@@ -25,8 +18,7 @@ const LayerItem = ({
 
   // Handlers
   const handleVisibilityButton = () => {
-    console.log("Layer visibility toggled", id);
-    handleVisibility(id);
+    toggleLayerVisibility(id);
   };
 
   return (

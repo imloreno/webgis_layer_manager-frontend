@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { GeoJSON } from "react-leaflet";
+import { isEmpty } from "lodash";
 import { useGeoJsonData } from "@hooks";
 import { ScreenMessage } from "@atoms";
-import { isEmpty } from "lodash";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
 
 const FeatureList = () => {
-  const { layers, geoJsonLayers, addGeoJsonLayer } = useLayersStore(
-    (state) => state
-  );
+  const {
+    layers = [],
+    geoJsonLayers,
+    addGeoJsonLayer,
+  } = useLayersStore((state) => state);
 
   // Fetch geojson data
   const layersToFetch = (): string[] => {
@@ -32,9 +34,11 @@ const FeatureList = () => {
   }
   return (
     <div className="z-[9999]">
-      {Object.keys(geoJsonLayers).map((geoJsonId: string) => {
-        return <GeoJSON key={geoJsonId} data={geoJsonLayers[geoJsonId]} />;
-      })}
+      {layers
+        .filter((layer: ILayer) => layer.isVisible)
+        .map((layer: ILayer) => {
+          return <GeoJSON key={layer.id} data={geoJsonLayers[layer.id]} />;
+        })}
     </div>
   );
 };

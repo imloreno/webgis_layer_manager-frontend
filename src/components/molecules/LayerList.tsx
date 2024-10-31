@@ -9,7 +9,7 @@ import { ILayer } from "@models/layers";
 const LayerList = () => {
   // Layers handler
   const { isLoading } = useLayers();
-  const { layers, setLayers, toggleLayerVisibility } = useLayersStore();
+  const { layers, setLayers } = useLayersStore();
 
   // Drag and drop events
   const handleDragEnd = (event: DragEndEvent) => {
@@ -21,7 +21,7 @@ const LayerList = () => {
   };
 
   return (
-    <section className="py-4 w-full mt-auto border-t border-[#1D1D26]">
+    <section className="py-6 w-full">
       <Subtitle className="px-6 mb-4">Capas</Subtitle>
 
       <ul className="flex flex-col gap-y-2 mt-8 mb-4 px-6 overflow-y-auto m-h-72 min-h-10 scroll-styled">
@@ -34,11 +34,7 @@ const LayerList = () => {
             {!isLoading &&
               layers.length > 0 &&
               layers.map((layer: ILayer) => (
-                <LayerItem
-                  key={layer.id}
-                  {...layer}
-                  handleVisibility={toggleLayerVisibility}
-                />
+                <LayerItem key={layer.id} {...layer} />
               ))}
             {layers.length === 0 && (
               <p className="text-xs text-label">

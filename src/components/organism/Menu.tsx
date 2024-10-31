@@ -11,10 +11,9 @@ const Menu = () => {
 
   return (
     <nav className="flex flex-col bg-[#0D0D0D] border-[#BF681B] border-l h-full min-h-[1000px]">
-      <LayerDetails />
       <LayerList />
 
-      <div className="px-8 mb-8 flex">
+      <div className="p-4 flex border-b border-t border-[#1D1D26]">
         <Button icon="add" onClick={handleAddLayerDisplay}>
           Agregar
         </Button>
@@ -23,6 +22,7 @@ const Menu = () => {
           onClose={handleAddLayerDisplay}
         />
       </div>
+      <LayerDetails />
     </nav>
   );
 };
