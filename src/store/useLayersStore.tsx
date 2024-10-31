@@ -1,5 +1,5 @@
-import { ILayer } from "@models/layers";
 import { create } from "zustand";
+import { GeoJson, ILayer } from "@models/layers";
 
 interface ILayerStore {
   // Layers handler
@@ -7,10 +7,15 @@ interface ILayerStore {
   addLayer: (layer: ILayer) => void;
   setLayers: (layers: ILayer[]) => void;
   toggleLayerVisibility: (id: string) => void;
+
+  // GeoJson handler
+  geoJsonLayers: { [id: string]: GeoJson };
+  addGeoJsonLayer: (geoJsonLayer: GeoJson) => void;
 }
 
 // Initial state
 const layersInitialState: ILayer[] = [];
+const geoJsonLayersInitialState: { [id: string]: GeoJson } = {};
 
 const useLayersStore = create<ILayerStore>((set) => ({
   // Layers handler
@@ -30,6 +35,17 @@ const useLayersStore = create<ILayerStore>((set) => ({
       ),
     }));
   },
+
+  // GeoJson handler
+  geoJsonLayers: geoJsonLayersInitialState,
+  addGeoJsonLayer: (geoJsonLayer: GeoJson) =>
+    set((state: ILayerStore) => ({
+      ...state,
+      geoJsonLayers: {
+        ...state.geoJsonLayers,
+        [geoJsonLayer.id]: geoJsonLayer,
+      },
+    })),
 }));
 
 export default useLayersStore;

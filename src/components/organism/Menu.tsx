@@ -14,9 +14,9 @@ const Menu = () => {
       <LayerDetails />
       <LayerList />
 
-      <div className="px-8 mb-8 flex justify-center">
+      <div className="px-8 mb-8 flex">
         <Button icon="add" onClick={handleAddLayerDisplay}>
-          Agregar capa
+          Agregar
         </Button>
         <AddLayerForm
           isOpen={showAddLayerForm}

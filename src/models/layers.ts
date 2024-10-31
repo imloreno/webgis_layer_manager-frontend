@@ -1,3 +1,5 @@
+import { GeoJsonObject } from "geojson";
+
 export interface ILayer {
   id: string;
   sorting: number;
@@ -5,4 +7,8 @@ export interface ILayer {
   originalFile?: string;
   coordinateSystem: string;
   isVisible: boolean;
+}
+
+export interface GeoJson extends GeoJsonObject {
+  id: string;
 }
