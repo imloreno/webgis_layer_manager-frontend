@@ -2,7 +2,7 @@ import { MapContainer as Map, TileLayer } from "react-leaflet";
 import { position } from "@utils/constants";
 import { getTheme } from "@utils/theme";
 import useSettings from "@store/useSettings";
-import { FeatureList } from "@molecules";
+import { FeatureList, ThemeButtonList } from "@molecules";
 
 const MapContainer = () => {
   const { themeSelected } = useSettings();
@@ -19,6 +19,7 @@ const MapContainer = () => {
     >
       <FeatureList />
       <TileLayer {...mapTheme.mapProps} />
+      <ThemeButtonList />
     </Map>
   );
 };

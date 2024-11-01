@@ -8,15 +8,9 @@ interface LayerItemProps extends ILayer {
   onDoubleClick?: () => void;
 }
 
-const LayerItem = ({
-  id,
-  sorting,
-  name,
-  isVisible,
-  onDoubleClick,
-}: LayerItemProps) => {
+const LayerItem = ({ id, name, isVisible, onDoubleClick }: LayerItemProps) => {
   // Layer Store
-  const { toggleLayerVisibility } = useLayersStore();
+  const { toggleLayerVisibility, selectedLayer } = useLayersStore();
   // React DND Kit
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: id });
@@ -37,16 +31,15 @@ const LayerItem = ({
       {...attributes}
       {...listeners}
       style={style}
-      className="py-2 px-4 rounded border border-[#6b6f7f]
+      className={`py-2 px-4 rounded border 
+       ${selectedLayer?.id === id ? "border-secondary" : "border-border"}
       cursor-pointer select-none flex items-center 
       gap-x-3 divide-x divide-[#383838] text-lg
-      font-normal bg-[#1D1D26]"
+      font-normal bg-[#1D1D26]`}
       onDoubleClick={onDoubleClick}
     >
       <Icons type="draggable" className="text-[#F29D52]" />
-      <span className="pl-3 text-base">
-        {sorting} - {name}
-      </span>
+      <span className="pl-3 text-base">{name}</span>
       <div
         className="w-4 h-4 ml-auto border-none flex items-center justify-center border"
         onMouseUp={handleVisibilityButton}

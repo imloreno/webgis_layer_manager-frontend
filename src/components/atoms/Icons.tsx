@@ -6,8 +6,11 @@ import {
   faEyeSlash,
   faGripVertical,
   faHome,
+  faLayerGroup,
   faMoon,
   faPlus,
+  faSheetPlastic,
+  faSitemap,
   faSun,
   faXmark,
   IconDefinition,
@@ -31,6 +34,9 @@ const iconList: { [key: string]: IconDefinition } = {
   add: faPlus,
   dark: faMoon,
   light: faSun,
+  layers: faLayerGroup,
+  subLayers: faSitemap,
+  sheet: faSheetPlastic,
 };
 
 const Icons = ({ type, className = "" }: IconsProps) => {

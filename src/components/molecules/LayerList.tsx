@@ -1,10 +1,11 @@
-import { LayerItem, Subtitle } from "@atoms";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
-import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { arrayMove, SortableContext } from "@dnd-kit/sortable";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import { Icons, LayerItem, Subtitle } from "@atoms";
 import { useLayers } from "@hooks";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
+import { AddLayerButton } from "@molecules";
 
 const LayerList = () => {
   // Layers handler
@@ -22,7 +23,12 @@ const LayerList = () => {
 
   return (
     <section className="py-6 w-full">
-      <Subtitle className="px-6 mb-4">Capas</Subtitle>
+      <div className="flex justify-between">
+        <Subtitle className="px-6 mb-4">
+          <Icons type="layers" className="text-label" /> Capas
+        </Subtitle>
+        <AddLayerButton />
+      </div>
 
       <ul className="flex flex-col gap-y-2 mt-8 mb-4 px-6 overflow-y-auto m-h-72 min-h-10 scroll-styled">
         <DndContext

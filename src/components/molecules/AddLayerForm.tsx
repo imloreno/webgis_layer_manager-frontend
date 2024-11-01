@@ -97,7 +97,7 @@ const AddLayerForm = ({ isOpen, onClose }: IAddLayerFormProps) => {
             );
           })}
           <Button disabled={false} type="submit">
-            Agregar
+            AGREGAR
           </Button>
         </form>
       </div>

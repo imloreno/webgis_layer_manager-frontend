@@ -3,14 +3,11 @@ import React from "react";
 
 interface SubtitleProps extends Customizable {
   children: React.ReactNode;
+  size?: string;
 }
 
-const Subtitle = ({ children, className }: SubtitleProps) => {
-  return (
-    <h3 className={`text-xl font-bold ${className} text-secondary`}>
-      {children}
-    </h3>
-  );
+const Subtitle = ({ children, className, size = "xl" }: SubtitleProps) => {
+  return <h3 className={`text-${size} font-bold ${className}`}>{children}</h3>;
 };
 
 export default Subtitle;

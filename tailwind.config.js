@@ -10,6 +10,8 @@ export default {
         background: "#0d0d0d",
         backgroundSecondary: "#1D1D26",
         border: "#6b6f7f",
+        success: "#A7D3A6",
+        successHover: "#CFE795",
       },
 
       font: {

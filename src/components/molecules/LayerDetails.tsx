@@ -1,5 +1,5 @@
 import { get, isEmpty } from "lodash";
-import { SublayerItem, Subtitle } from "@atoms";
+import { Icons, SublayerItem, Subtitle } from "@atoms";
 import { GeoJson } from "@models/layers";
 import useLayersStore from "@store/useLayersStore";
 import { Feature } from "geojson";
@@ -11,7 +11,16 @@ const LayerDetails = () => {
 
   return (
     <section className="px-6 py-4">
-      <Subtitle className="mb-4">Sublayers</Subtitle>
+      <Subtitle className="mb-4 text-primary">
+        <Icons type="subLayers" className="text-label" /> Subcapas
+      </Subtitle>
+
+      {selectedLayer?.name && (
+        <Subtitle size="sm" className="text-tertiary mb-8">
+          Capa: <span className="text-label">{selectedLayer.name}</span>
+        </Subtitle>
+      )}
+
       <div className="">
         {!selectedLayer && (
           <p className="text-xs text-label">
@@ -29,13 +38,6 @@ const LayerDetails = () => {
           </ul>
         )}
       </div>
-      {/* <div className="aspect-video bg-[#1D1D26] overflow-hidden">
-        <img
-          src="no_image.png"
-          alt="No imge"
-          className="w-full h-full object-cover"
-        />
-      </div> */}
     </section>
   );
 };
