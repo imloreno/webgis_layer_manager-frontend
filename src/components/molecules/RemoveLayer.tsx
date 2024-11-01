@@ -7,7 +7,9 @@ import { useLayers } from "@hooks";
 
 const RemoveLayer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedLayer } = useLayersStore((state) => state);
+  const { selectedLayer, toggleSelectedLayer } = useLayersStore(
+    (state) => state
+  );
   const { deleteLayer, isRemoving } = useLayers();
 
   // Event handlers
@@ -15,6 +17,7 @@ const RemoveLayer = () => {
   const handleOpen = () => setIsOpen(true);
   const handleSuccess = () => {
     deleteLayer(get(selectedLayer, "id") || "");
+    toggleSelectedLayer("");
     handleClose();
   };
 
