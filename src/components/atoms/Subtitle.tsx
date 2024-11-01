@@ -7,7 +7,7 @@ interface SubtitleProps extends Customizable {
 
 const Subtitle = ({ children, className }: SubtitleProps) => {
   return (
-    <h3 className={`text-xl font-bold ${className} text-[#F29D52]`}>
+    <h3 className={`text-xl font-bold ${className} text-secondary`}>
       {children}
     </h3>
   );

@@ -11,6 +11,10 @@ interface ILayerStore {
   // GeoJson handler
   geoJsonLayers: { [id: string]: GeoJson };
   addGeoJsonLayer: (geoJsonLayer: GeoJson) => void;
+
+  // Layer selection
+  selectedLayer?: ILayer;
+  selectLayer: (layer: string) => void;
 }
 
 // Initial state
@@ -48,6 +52,14 @@ const useLayersStore = create<ILayerStore>((set) => ({
         ...state.geoJsonLayers,
         [geoJsonLayer.id]: geoJsonLayer,
       },
+    })),
+
+  // Layer selection
+  selectedLayer: undefined,
+  selectLayer: (layerId: string) =>
+    set((state: ILayerStore) => ({
+      ...state,
+      selectedLayer: state.layers.find((layer) => layer.id === layerId),
     })),
 }));
 

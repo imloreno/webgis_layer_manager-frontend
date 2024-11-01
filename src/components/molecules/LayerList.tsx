@@ -9,7 +9,7 @@ import { ILayer } from "@models/layers";
 const LayerList = () => {
   // Layers handler
   const { isLoading } = useLayers();
-  const { layers, setLayers } = useLayersStore();
+  const { layers, setLayers, selectLayer } = useLayersStore();
 
   // Drag and drop events
   const handleDragEnd = (event: DragEndEvent) => {
@@ -34,7 +34,11 @@ const LayerList = () => {
             {!isLoading &&
               layers.length > 0 &&
               layers.map((layer: ILayer) => (
-                <LayerItem key={layer.id} {...layer} />
+                <LayerItem
+                  key={layer.id}
+                  {...layer}
+                  onDoubleClick={() => selectLayer(layer.id)}
+                />
               ))}
             {layers.length === 0 && (
               <p className="text-xs text-label">

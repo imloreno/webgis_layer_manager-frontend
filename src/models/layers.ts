@@ -1,4 +1,4 @@
-import { GeoJsonObject } from "geojson";
+import { FeatureCollection } from "geojson";
 
 export interface ILayer {
   id: string;
@@ -9,6 +9,6 @@ export interface ILayer {
   isVisible: boolean;
 }
 
-export interface GeoJson extends GeoJsonObject {
+export interface GeoJson extends FeatureCollection {
   id: string;
 }

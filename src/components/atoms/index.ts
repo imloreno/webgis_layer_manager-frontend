@@ -5,4 +5,5 @@ export { default as InputFile } from "./InputFile";
 export { default as LayerItem } from "./LayerItem";
 export { default as ScreenMessage } from "./ScreenMessage";
 export { default as Spinner } from "./Spinner";
+export { default as SublayerItem } from "./SublayerItem";
 export { default as Subtitle } from "./Subtitle";
