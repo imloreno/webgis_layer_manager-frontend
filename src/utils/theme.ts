@@ -27,3 +27,14 @@ export const themeParams = {
 export const getTheme = (props: Theme) => {
   return themeParams[props];
 };
+
+export const defaultTheme = (): Theme => {
+  const theme = localStorage.getItem("theme");
+
+  if (theme) {
+    return theme as Theme;
+  }
+  return window.matchMedia("(prefers-color-scheme:dark)").matches
+    ? Theme.dark
+    : Theme.light || Theme.dark;
+};

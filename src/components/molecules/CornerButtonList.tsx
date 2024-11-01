@@ -2,7 +2,15 @@ import { ButtonIcon } from "@atoms";
 import useSettings from "@store/useSettings";
 import { Theme } from "@utils/theme";
 
-const ThemeButtonList = () => {
+interface CornerButtonProps {
+  isFullscreen: boolean;
+  toggleFullScreen: () => void;
+}
+
+const CornerButtonList = ({
+  isFullscreen,
+  toggleFullScreen,
+}: CornerButtonProps) => {
   const { themeSelected, setTheme } = useSettings();
 
   // Handlers
@@ -20,8 +28,12 @@ const ThemeButtonList = () => {
       gap-y-2 text-backgroundSecondary text-lg"
     >
       <ButtonIcon icon={themeSelected} onClick={handleThemeChange} />
+      <ButtonIcon
+        icon={isFullscreen ? "compress" : "expand"}
+        onClick={toggleFullScreen}
+      />
     </div>
   );
 };
 
-export default ThemeButtonList;
+export default CornerButtonList;
