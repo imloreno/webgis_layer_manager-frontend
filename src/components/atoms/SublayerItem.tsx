@@ -6,18 +6,22 @@ interface SublayerItemProps {
   feature: Feature;
 }
 
+// SublayerItemProperty component
 const SublayerItemProperty = ({
   title,
   value,
+  variant,
 }: {
   title: string;
   value: string;
+  variant?: "special";
 }) => (
-  <p>
+  <p className={`${variant === "special" && "text-[#81B29A]"}`}>
     <b className="text-tertiary">{LABELS[title] || title}:</b> {value}
   </p>
 );
 
+// Main component
 const SublayerItem = ({
   feature: {
     properties,
@@ -40,7 +44,11 @@ const SublayerItem = ({
             />
           );
         })}
-      <SublayerItemProperty title="Feature" value={type || "No especificado"} />
+      <SublayerItemProperty
+        title="Feature"
+        value={type || "No especificado"}
+        variant="special"
+      />
     </li>
   );
 };
