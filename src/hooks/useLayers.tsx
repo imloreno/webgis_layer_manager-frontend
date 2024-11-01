@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useLayersStore from "@store/useLayersStore";
-import { createLayer, fetchLayers } from "@api/layers";
+import { createLayer, fetchLayers, removeLayer } from "@api/layers";
 import { ILayer } from "@models/layers";
-import { CREATE_LAYER, FETCH_LAYERS } from "@hooks";
+import { CREATE_LAYER, FETCH_LAYERS, REMOVE_LAYER } from "@hooks";
 
 // API response interface
 interface APIResponse {
@@ -41,6 +41,19 @@ const useLayers = () => {
     },
   });
 
+  // Remove layer API call
+  const { mutate: deleteLayer, isPending: isRemoving } = useMutation({
+    mutationKey: [REMOVE_LAYER],
+    mutationFn: removeLayer,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [FETCH_LAYERS],
+        exact: true,
+        refetchType: "active",
+      });
+    },
+  });
+
   // Use useEffect to update Zustand store when data is fetched
   useEffect(() => {
     if (response) {
@@ -69,6 +82,10 @@ const useLayers = () => {
     // Create layer
     addLayer,
     isAddingLayer,
+
+    // Remove layer
+    deleteLayer,
+    isRemoving,
   };
 };
 

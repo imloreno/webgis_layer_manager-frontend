@@ -12,6 +12,7 @@ export const API_URL = "/api/v1";
 
 // Layers
 export const LAYERS_URL = API_URL + "/geojson/layers/";
+export const LAYER_BY_ID_URL = `${LAYERS_URL}${ID}/`;
 export const GET_GEOJSON_LAYER = `${API_URL}/geojson/layers/${ID}/geojson/`;
 
 // Labels

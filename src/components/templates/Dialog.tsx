@@ -1,13 +1,19 @@
-import { Icons } from "@atoms";
 import { MouseEvent, ReactNode } from "react";
+import { Icons } from "@atoms";
+import { Customizable } from "@models/base";
 
-interface DialogProps {
+interface DialogProps extends Customizable {
   children: ReactNode;
   isOpen: boolean;
   onClose?: () => void;
 }
 
-const Dialog = ({ children, isOpen, onClose = () => {} }: DialogProps) => {
+const Dialog = ({
+  children,
+  isOpen,
+  onClose = () => {},
+  className = "",
+}: DialogProps) => {
   const handleOnClose = () => {
     onClose();
   };
@@ -25,12 +31,16 @@ const Dialog = ({ children, isOpen, onClose = () => {} }: DialogProps) => {
          flex items-center justify-center z-[9999]"
       onClick={handleBackgroundClick}
     >
-      <article className="w-[30rem] min-h-96 bg-[#212226] border border-[#383838] rounded-lg p-8 relative">
+      <article
+        className={`w-[30rem] bg-[#212226] 
+        border border-[#383838] rounded-lg p-8 relative
+        ${className}`}
+      >
         <div
           className="flex items-center 
                justify-center w-4 h-4 right-8 top-8 
                absolute p-3 cursor-pointer rounded hover:scale-110
-               bg-rose-600"
+               bg-danger"
           onClick={handleOnClose}
         >
           <Icons type="close" className="text-2xl" />

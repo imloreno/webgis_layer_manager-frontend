@@ -1,11 +1,13 @@
 import { Icons } from "@atoms";
+import { Customizable } from "@models/base";
 
-interface ButtonProps {
+interface ButtonProps extends Customizable {
   children: React.ReactNode;
   icon?: string;
   onClick?: () => void;
   type?: "button" | "submit";
   disabled?: boolean;
+  variant?: "default" | "danger";
 }
 const Button = ({
   children,
@@ -13,15 +15,22 @@ const Button = ({
   onClick = () => {},
   type = "button",
   disabled = false,
+  variant = "default",
+  className = "",
 }: ButtonProps) => {
+  const dynamicClasses = `
+  ${variant === "default" && "bg-success hover:bg-successHover text-text"}
+  ${variant === "danger" && "bg-danger hover:bg-dangerHover text-primary"}
+  ${!disabled && "hover:scale-[1.02]"}
+  `;
   return (
     <button
       type={type}
-      className="py-2 px-4 h-10 text-base
-         bg-success hover:bg-successHover rounded
+      className={`px-4 h-9 text-base rounded
          disabled:bg-background disabled:cursor-not-allowed
-         disabled:text-label
-         text-[#1D1D26] font-bold"
+         disabled:text-label font-bold whitespace-nowrap
+         disabled:border disabled:border-border
+         ${dynamicClasses} ${className}`}
       disabled={disabled}
       onClick={onClick}
     >

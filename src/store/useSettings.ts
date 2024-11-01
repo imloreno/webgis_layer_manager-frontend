@@ -9,7 +9,7 @@ const defaultTheme = (): Theme => {
   }
   return window.matchMedia("(prefers-color-scheme:dark)").matches
     ? Theme.dark
-    : Theme.light;
+    : Theme.light || Theme.dark;
 };
 
 interface ITheme {

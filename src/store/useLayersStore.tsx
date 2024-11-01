@@ -1,3 +1,4 @@
+import { get } from "lodash";
 import { create } from "zustand";
 import { GeoJson, ILayer } from "@models/layers";
 
@@ -14,7 +15,7 @@ interface ILayerStore {
 
   // Layer selection
   selectedLayer?: ILayer;
-  selectLayer: (layer: string) => void;
+  toggleSelectedLayer: (layer: string) => void;
 }
 
 // Initial state
@@ -56,11 +57,21 @@ const useLayersStore = create<ILayerStore>((set) => ({
 
   // Layer selection
   selectedLayer: undefined,
-  selectLayer: (layerId: string) =>
-    set((state: ILayerStore) => ({
-      ...state,
-      selectedLayer: state.layers.find((layer) => layer.id === layerId),
-    })),
+  toggleSelectedLayer: (layerId: string) => {
+    set((state: ILayerStore) => {
+      if (get(state, "selectedLayer.id") === layerId) {
+        return {
+          ...state,
+          selectedLayer: undefined,
+        };
+      } else {
+        return {
+          ...state,
+          selectedLayer: state.layers.find((layer) => layer.id === layerId),
+        };
+      }
+    });
+  },
 }));
 
 export default useLayersStore;

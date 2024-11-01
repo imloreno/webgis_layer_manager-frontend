@@ -6,11 +6,13 @@ import { useLayers } from "@hooks";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
 import { AddLayerButton } from "@molecules";
+import { get } from "lodash";
 
 const LayerList = () => {
   // Layers handler
   const { isLoading } = useLayers();
-  const { layers, setLayers, selectLayer } = useLayersStore();
+  const { layers, setLayers, toggleSelectedLayer, selectedLayer } =
+    useLayersStore();
 
   // Drag and drop events
   const handleDragEnd = (event: DragEndEvent) => {
@@ -23,9 +25,9 @@ const LayerList = () => {
 
   return (
     <section className="py-6 w-full">
-      <div className="flex justify-between">
-        <Subtitle className="px-6 mb-4">
-          <Icons type="layers" className="text-label" /> Capas
+      <div className="flex justify-between items-center px-6 mb-4">
+        <Subtitle className="text-primary">
+          <Icons type="layers" className="text-tertiary" /> Capas
         </Subtitle>
         <AddLayerButton />
       </div>
@@ -43,7 +45,7 @@ const LayerList = () => {
                 <LayerItem
                   key={layer.id}
                   {...layer}
-                  onDoubleClick={() => selectLayer(layer.id)}
+                  onDoubleClick={() => toggleSelectedLayer(layer.id)}
                 />
               ))}
             {layers.length === 0 && (
@@ -55,6 +57,16 @@ const LayerList = () => {
           </SortableContext>
         </DndContext>
       </ul>
+      {!!selectedLayer && (
+        <p className="text-xs text-label m-6">
+          <b className="text-labelHighlight">Doble click</b> en la capa
+          <b className="text-labelHighlight">
+            {" "}
+            {get(selectedLayer, "name")}
+          </b>{" "}
+          para deseleccionarla.
+        </p>
+      )}
     </section>
   );
 };

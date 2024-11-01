@@ -1,4 +1,9 @@
-import { GET_GEOJSON_LAYER, ID, LAYERS_URL } from "@utils/constants";
+import {
+  GET_GEOJSON_LAYER,
+  ID,
+  LAYER_BY_ID_URL,
+  LAYERS_URL,
+} from "@utils/constants";
 import api from "./config";
 // import { IGeoJSONBase } from "@models/form";
 
@@ -18,4 +23,9 @@ export const createLayer = (data: FormData) => {
 // Api to call geojson data
 export const fetchGeoJson = (layerId: string) => {
   return api.get(GET_GEOJSON_LAYER.replace(ID, layerId));
+};
+
+// Api to call geojson data
+export const removeLayer = (layerId: string): Promise<void> => {
+  return api.delete(LAYER_BY_ID_URL.replace(ID, layerId));
 };

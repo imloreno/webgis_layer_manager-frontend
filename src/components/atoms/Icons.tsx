@@ -12,6 +12,7 @@ import {
   faSheetPlastic,
   faSitemap,
   faSun,
+  faTrashCan,
   faXmark,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
@@ -37,6 +38,7 @@ const iconList: { [key: string]: IconDefinition } = {
   layers: faLayerGroup,
   subLayers: faSitemap,
   sheet: faSheetPlastic,
+  trash: faTrashCan,
 };
 
 const Icons = ({ type, className = "" }: IconsProps) => {

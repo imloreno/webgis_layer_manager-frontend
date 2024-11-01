@@ -6,12 +6,16 @@ export default {
         primary: "#ffffffde",
         secondary: "#f27f3d",
         tertiary: "#f29d52",
+        text: "#1D1D26",
         label: "#6b7280",
+        labelHighlight: "#F5B47A",
         background: "#0d0d0d",
         backgroundSecondary: "#1D1D26",
         border: "#6b6f7f",
         success: "#A7D3A6",
         successHover: "#CFE795",
+        danger: "#CA054D",
+        dangerHover: "#FA387F",
       },
 
       font: {

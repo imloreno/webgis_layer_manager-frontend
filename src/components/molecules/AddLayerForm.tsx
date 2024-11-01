@@ -68,7 +68,9 @@ const AddLayerForm = ({ isOpen, onClose }: IAddLayerFormProps) => {
   return (
     <Dialog isOpen={isOpen} onClose={onClose}>
       <div className="form">
-        <Subtitle className="mb-8">Agregar una nueva capa</Subtitle>
+        <Subtitle className="mb-8 text-secondary">
+          Agregar una nueva capa
+        </Subtitle>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-y-4"
@@ -96,8 +98,13 @@ const AddLayerForm = ({ isOpen, onClose }: IAddLayerFormProps) => {
               />
             );
           })}
-          <Button disabled={false} type="submit">
-            AGREGAR
+          <Button
+            disabled={false}
+            type="submit"
+            icon="sheet"
+            className="w-fit mt-4"
+          >
+            Agregar capa
           </Button>
         </form>
       </div>

@@ -3,6 +3,7 @@ import { Icons, SublayerItem, Subtitle } from "@atoms";
 import { GeoJson } from "@models/layers";
 import useLayersStore from "@store/useLayersStore";
 import { Feature } from "geojson";
+import { RemoveLayer } from "@molecules";
 
 const LayerDetails = () => {
   const { geoJsonLayers, selectedLayer } = useLayersStore((state) => state);
@@ -12,20 +13,23 @@ const LayerDetails = () => {
   return (
     <section className="px-6 py-4">
       <Subtitle className="mb-4 text-primary">
-        <Icons type="subLayers" className="text-label" /> Subcapas
+        <Icons type="subLayers" className="text-tertiary" /> Subcapas
       </Subtitle>
 
-      {selectedLayer?.name && (
-        <Subtitle size="sm" className="text-tertiary mb-8">
-          Capa: <span className="text-label">{selectedLayer.name}</span>
-        </Subtitle>
-      )}
+      <div className="flex justify-between gap-x-4 items-center mb-8">
+        {selectedLayer?.name && (
+          <Subtitle size="base" className="text-success font-normal">
+            Capa: <span className="text-label">{selectedLayer.name}</span>
+          </Subtitle>
+        )}
+        <RemoveLayer />
+      </div>
 
       <div className="">
         {!selectedLayer && (
           <p className="text-xs text-label">
-            <span className="font-bold">Doble click</span> en una capa para ver
-            los detalles
+            <b className="text-labelHighlight">Doble click</b> en una capa para
+            ver los detalles
           </p>
         )}
         {selectedLayer && !isEmpty(geoJsonLayerSelected) && (
