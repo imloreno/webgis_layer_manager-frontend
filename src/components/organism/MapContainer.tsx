@@ -11,10 +11,11 @@ const MapContainer = () => {
   // Fullscreen variables
   const [isFullscreen, setFullscreen] = useState(false);
   const fullScreenElement = useRef(null);
-  const divElement: any = fullScreenElement?.current;
 
   // Handlers
   const toggleFullScreen = () => {
+    const divElement: any = fullScreenElement?.current;
+
     // Check if the divElement is fullscreen and switch to the opposite
     if (divElement.requestFullscreen && !isFullscreen) {
       divElement.requestFullscreen(); // For Chrome & Firefox
@@ -32,6 +33,7 @@ const MapContainer = () => {
   };
 
   useEffect(() => {
+    const divElement: any = fullScreenElement?.current;
     if (!divElement) return;
 
     const fullScreenListener = divElement.addEventListener(
@@ -47,7 +49,6 @@ const MapContainer = () => {
 
     return () =>
       divElement.removeEventListener("fullscreenchange", fullScreenListener);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
