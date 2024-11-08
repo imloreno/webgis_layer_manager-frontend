@@ -5,6 +5,33 @@ import { useGeoJsonData } from "@hooks";
 import { ScreenMessage, Spinner } from "@atoms";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
+import { GEOJSON_LABELS } from "@utils/constants";
+
+// onEachFeature function to add a tooltip
+const onEachFeature = (feature: any, layer: any) => {
+  const properties = feature?.properties;
+  if (!isEmpty(properties)) {
+    layer.bindTooltip(
+      `<div>
+        ${Object.entries(properties)
+          .map(
+            ([key, value]) =>
+              `<p class="font-normal text-base h-6 
+                  rounded-md"
+              >
+                <b class="font-bold">${GEOJSON_LABELS[key] ?? key}: </b>
+                ${value}
+              </p>`
+          )
+          .join("")}
+      </div>`,
+      {
+        // permanent: true,
+        direction: "top",
+      }
+    );
+  }
+};
 
 const FeatureList = () => {
   const {
@@ -42,7 +69,13 @@ const FeatureList = () => {
         layers
           .filter((layer: ILayer) => layer.isVisible)
           .map((layer: ILayer) => {
-            return <GeoJSON key={layer.id} data={geoJsonLayers[layer.id]} />;
+            return (
+              <GeoJSON
+                key={layer.id}
+                data={geoJsonLayers[layer.id]}
+                onEachFeature={onEachFeature}
+              />
+            );
           })}
     </div>
   );

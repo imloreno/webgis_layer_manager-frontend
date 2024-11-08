@@ -1,4 +1,4 @@
-import { LABELS } from "@utils/constants";
+import { GEOJSON_LABELS } from "@utils/constants";
 import { isEmpty } from "lodash";
 import { Tooltip } from "react-leaflet";
 
@@ -13,7 +13,7 @@ const LeafLetToolTip = ({ properties }: ITooltipProperties) => {
         {!isEmpty(properties) &&
           Object.entries(properties).map(([key, value]) => (
             <p>
-              <b>{LABELS[key]}: </b>
+              <b>{GEOJSON_LABELS[key]}: </b>
               {value}
             </p>
           ))}

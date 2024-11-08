@@ -1,4 +1,4 @@
-import { LABELS } from "@utils/constants";
+import { GEOJSON_LABELS } from "@utils/constants";
 import { Feature } from "geojson";
 import { isEmpty } from "lodash";
 
@@ -17,7 +17,7 @@ const SublayerItemProperty = ({
   variant?: "special";
 }) => (
   <p className={`${variant === "special" && "text-[#81B29A]"}`}>
-    <b className="text-tertiary">{LABELS[title] || title}:</b> {value}
+    <b className="text-tertiary">{GEOJSON_LABELS[title] || title}:</b> {value}
   </p>
 );
 

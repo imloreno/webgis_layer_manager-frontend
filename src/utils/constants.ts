@@ -16,9 +16,10 @@ export const LAYER_BY_ID_URL = `${LAYERS_URL}${ID}/`;
 export const GET_GEOJSON_LAYER = `${API_URL}/geojson/layers/${ID}/geojson/`;
 
 // Labels
-export const LABELS: { [key: string]: string } = {
+export const GEOJSON_LABELS: { [key: string]: number | string } = {
   id: "ID",
   name: "Nombre",
   description: "Descripción",
   type: "Tipo",
+  area: "Área",
 };
