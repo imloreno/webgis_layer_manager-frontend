@@ -23,3 +23,12 @@ export const GEOJSON_LABELS: { [key: string]: number | string } = {
   type: "Tipo",
   area: "Área",
 };
+
+export const RANDOM_COLOR_PALETTE = [
+  "#2DD881",
+  "#3B8EA5",
+  "#D00000",
+  "#FFBA08",
+  "#ED217C",
+  "#FF9B71",
+];

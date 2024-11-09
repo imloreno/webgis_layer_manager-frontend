@@ -3,7 +3,7 @@ import { MapContainer as Map, TileLayer } from "react-leaflet";
 import { position } from "@utils/constants";
 import { getTheme } from "@utils/theme";
 import useSettings from "@store/useSettings";
-import { FeatureList, CornerButtonList } from "@molecules";
+import { FeatureList, CornerButtonList, Drawer } from "@molecules";
 
 const MapContainer = () => {
   const { themeSelected } = useSettings();
@@ -67,6 +67,7 @@ const MapContainer = () => {
           isFullscreen={isFullscreen}
           toggleFullScreen={toggleFullScreen}
         />
+        <Drawer />
       </Map>
     </div>
   );

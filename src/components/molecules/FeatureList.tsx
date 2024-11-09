@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { GeoJSON } from "react-leaflet";
-import { isEmpty } from "lodash";
+import { isEmpty, sample } from "lodash";
 import { useGeoJsonData } from "@hooks";
 import { ScreenMessage, Spinner } from "@atoms";
 import useLayersStore from "@store/useLayersStore";
 import { ILayer } from "@models/layers";
-import { GEOJSON_LABELS } from "@utils/constants";
+import { GEOJSON_LABELS, RANDOM_COLOR_PALETTE } from "@utils/constants";
 
 // onEachFeature function to add a tooltip
 const onEachFeature = (feature: any, layer: any) => {
@@ -68,12 +68,18 @@ const FeatureList = () => {
       {!isEmpty(geoJsonLayers) &&
         layers
           .filter((layer: ILayer) => layer.isVisible)
-          .map((layer: ILayer) => {
+          .map((layer: ILayer, index) => {
+            const color = RANDOM_COLOR_PALETTE[index];
             return (
               <GeoJSON
                 key={layer.id}
                 data={geoJsonLayers[layer.id]}
                 onEachFeature={onEachFeature}
+                style={{
+                  color,
+                  fillColor: color,
+                  weight: 3,
+                }}
               />
             );
           })}

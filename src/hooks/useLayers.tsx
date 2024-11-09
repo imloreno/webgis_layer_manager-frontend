@@ -36,8 +36,9 @@ const useLayers = () => {
       queryClient.invalidateQueries({
         queryKey: [FETCH_LAYERS],
         exact: true,
-        refetchType: "active",
+        refetchType: "all",
       });
+      window.location.reload();
     },
   });
 

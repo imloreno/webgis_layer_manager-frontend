@@ -1,6 +1,9 @@
 export { default as AddLayerButton } from "./AddLayerButton";
 export { default as AddLayerForm } from "./AddLayerForm";
 export { default as CornerButtonList } from "./CornerButtonList";
+export { default as Drawer } from "./Drawer";
+export { default as DrawerForm } from "./DrawerForm";
+export { default as index } from "./Feature";
 export { default as FeatureList } from "./FeatureList";
 export { default as LayerDetails } from "./LayerDetails";
 export { default as LayerList } from "./LayerList";
