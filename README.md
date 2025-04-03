@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# 🗺️ WebGIS Layer Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![GitHub Issues](https://img.shields.io/github/issues/imloreno/webgis_layer_manager-frontend)](https://github.com/imloreno/webgis_layer_manager-frontend/issues)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-0.1.0-ff69b4)](https://github.com/imloreno/webgis_layer_manager-frontend)
 
-Currently, two official plugins are available:
+**A geospatial playground where maps meet magic!** Create, edit, and visualize geographic data like a digital cartographer. Built with ❤️ and GeoJSON.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Demo](https://via.placeholder.com/800x400.png?text=Map+Interaction+Demo+Placeholder) _("Our demo map is currently exploring the Bermuda Triangle...")_
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🌟 Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Draw whatever you want**  
+  ✏️ Points, polygons, lines - create geographic layers with Leaflet-Draw
+- **GeoJSON Wizardry**  
+  🧙♂️ All features stored as GeoJSON in PostGIS
+- **Layer Jenga**  
+  🧱 Drag-n-drop layer management with `@dnd-kit`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**  
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
+![Leaflet](https://img.shields.io/badge/-Leaflet-199900?logo=leaflet&logoColor=white)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+![Zustand](https://img.shields.io/badge/-Zustand-764ABC?logo=redux&logoColor=white)
+
+**Backend**  
+![GeoDjango](https://img.shields.io/badge/-GeoDjango-092E20?logo=django&logoColor=white)
+![PostGIS](https://img.shields.io/badge/-PostGIS-336791?logo=postgresql&logoColor=white)
+![GeoJSON](https://img.shields.io/badge/-GeoJSON-000000?logo=json&logoColor=white)
+
+**Tools**  
+![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/-Tailwind-06B6D4?logo=tailwindcss&logoColor=white)
+![React Query](https://img.shields.io/badge/-React_Query-FF4154?logo=reactquery&logoColor=white)
+
+---
+
+## 🚀 Installation
+
+1. Clone the repository (careful, it's addictive):
+
+```bash
+git clone https://github.com/imloreno/webgis_layer_manager-frontend.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install dependencies with pnpm:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+pnpm install
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+3. Start the development server:
+
+```bash
+pnpm run dev
+```
+
+4. For production builds:
+
+```bash
+pnpm run build
 ```
